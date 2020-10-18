@@ -5,13 +5,8 @@ import pathlib
 from pathlib import Path
 import pandas as pd
 import os
-import matplotlib.pyplot as plt
-import seaborn as sns
 import datetime
 import random
-
-import h5py
-import zipfile
 
 import tensorflow as tf
 from tensorflow import keras
