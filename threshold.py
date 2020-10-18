@@ -4,7 +4,6 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 import random
-import seaborn as sns
 
 import tensorflow as tf
 
