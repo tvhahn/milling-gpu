@@ -1,21 +1,14 @@
 #!/bin/bash
-#SBATCH --time=00:10:00 # 10 minutes
-#SBATCH --mem=1G
+#SBATCH --gres=gpu:1        # request GPU "generic resource"
+#SBATCH --cpus-per-task=6   # maximum CPU cores per GPU request: 6 on Cedar, 16 on Graham.
+#SBATCH --mem=32000M        # memory per node
+#SBATCH --time=0-00:10      # time (DD-HH:MM)
+#SBATCH --output=%N-%j.out  # %N for node name, %j for jobID
 #SBATCH --mail-type=ALL               # Type of email notification- BEGIN,END,F$
 #SBATCH --mail-user=18tcvh@queensu.ca   # Email to which notifications will be $
 
 
-echo "Starting task"
+module load scipy-stack/2019b cuda cudnn
+source ~/tf1/bin/activate
 
-# Place the code to execute here
-module load scipy-stack/2019b
-virtualenv --no-download $SLURM_TMPDIR/env
-source $SLURM_TMPDIR/env/bin/activate
-pip install --no-index --upgrade pip
-pip install --no-index scikit_learn
-pip install --no-index xgboost
-# pip install /home/tvhahn/scikit_learn-0.22.1-cp37-cp37m-linux_x86_64.whl
-pip install /home/tvhahn/imbalanced_learn-0.6.1-py3-none-any.whl
-# pip install /home/tvhahn/xgboost-0.90-cp37-cp37m-linux_x86_64.whl
-
-python random_search_run.py 1
+python train_model_tcn.py
