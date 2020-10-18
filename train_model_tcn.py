@@ -329,9 +329,9 @@ def model_fit(
 
     if compile_model_only == False:
         # save the model summary into a text file (from stack overflow http://bit.ly/2DHI6fM)
-        with open("models/saved_models/" + date_time + "_report.txt", "w") as fh:
-            variational_encoder.summary(print_fn=lambda x: fh.write(x + "\n"))
-            variational_decoder.summary(print_fn=lambda x: fh.write(x + "\n"))
+        # with open("models/saved_models/" + date_time + "_report.txt", "w") as fh:
+        #     variational_encoder.summary(print_fn=lambda x: fh.write(x + "\n"))
+        #     variational_decoder.summary(print_fn=lambda x: fh.write(x + "\n"))
 
         # # use tensorboard to track training
         # log_dir = "logs/" + date_time + "_" + model_name
