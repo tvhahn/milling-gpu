@@ -386,7 +386,7 @@ def model_fit(
 random_search_iterations = 500
 
 # random seed value from system input
-ransdom_seed_input = sp_randint(1, 5000000)
+ransdom_seed_input = random.randint(0,9999)
 
 # parameters for beta-vae
 p_bvae_grid = {
