@@ -383,10 +383,10 @@ def model_fit(
 
 
 # Input the number of iterations you want to search over
-random_search_iterations = 1
+random_search_iterations = 500
 
 # random seed value from system input
-ransdom_seed_input = 135
+ransdom_seed_input = sp_randint(1, 5000000)
 
 # parameters for beta-vae
 p_bvae_grid = {
@@ -396,11 +396,11 @@ p_bvae_grid = {
     "start_filter_no": sp_randint(16, 128),
     "dilations": [[1, 2, 4, 8], [1, 2, 4], [1, 2]],
     "kernel_size_1": sp_randint(2, 9),
-    "earlystop_patience": sp_randint(30, 50),
+    "earlystop_patience": sp_randint(10, 100),
 }
 
 # epochs
-epochs = 1
+epochs = 5000
 
 
 # folder to save models in
@@ -539,7 +539,7 @@ for i, params in enumerate(p_bvae):
 
         # df = pd.DataFrame(results, columns=cols)
 
-        # df['date_time'] = date_time
+        df['rand_int'] = ransdom_seed_input
         # df['model_name'] = model_name
 
         df_all = df_all.append(df, sort=False)
